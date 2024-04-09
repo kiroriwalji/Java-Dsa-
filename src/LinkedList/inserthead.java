@@ -33,12 +33,21 @@ public class inserthead{
             Node temp = new Node(val);
 
             if(head== null){
-                temp = head;
+                temp = head = tail;
             }else{
                 temp.next=head;
-
+                head = temp;
             }
-            head=temp;
+
+        }
+        void insertarindex(int index,int num){
+            Node t= new Node(num);
+            Node temp = head;
+            for(int i=0;i<index-1;i++){
+                temp=temp.next;
+            }
+            t.next = temp.next;
+            temp.next=t;
         }
 
     }
@@ -54,6 +63,9 @@ public class inserthead{
         ll.insertathead(101);
         ll.insertathead(102);
         ll.insertathead(103);
+        ll.display();
+        System.out.println();
+        ll.insertarindex(9,55);
         ll.display();
     }
 }
