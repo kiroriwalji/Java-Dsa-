@@ -1,93 +1,89 @@
 package LinkedList;
 
 public class properindexcode {
-    public class inserthead{
-        public static class Node{
-            int val;
-            LinkedList.inserthead.Node next;
-
-            Node(int val){
-                this.val=val;
+    public static class Node{
+        int data;
+        Node next;
+        Node(int data){
+            this.data = data;
+        }
+    }
+    public static class linkedlist{
+        Node head = null;
+        Node tail= null;
+        void insertatend(int data){
+            Node temp = new Node(data);
+            if (head == null) {
+                head=temp;
+            }else{
+                tail.next = temp;
+            }
+            tail= temp;
+        }
+        void display(){
+            Node temp=head;
+            while(temp!=null){
+                System.out.print(temp.data+" ");
+                temp=temp.next;
             }
         }
-        public static class linkedlist{
-            LinkedList.inserthead.Node head = null;
-            LinkedList.inserthead.Node tail = null;
-            void insertatend(int val){
-                LinkedList.inserthead.Node temp = new LinkedList.inserthead.Node(val);
-                if(head == null){
-                    head = temp;
-                }
-                else{
-                    tail.next=temp;
-                }
-                tail = temp;
+        void inserthead( int data){
+            Node temp = new Node(data);
+            if(head==null){
+                head = tail =temp;
+            }else{
+                temp.next =head;
+                head = temp;
             }
-            void display(){
-                LinkedList.inserthead.Node temp = head;
-                while(temp!=null){
-                    System.out.print(temp.val+" ");
-                    temp= temp.next;
-                }
-            }
-            void insertathead(int val){
-                LinkedList.inserthead.Node temp = new LinkedList.inserthead.Node(val);
-
-                if(head== null){
-                    temp = head = tail;
-                }else{
-                    temp.next=head;
-                    head = temp;
-                }
-
-            }
-            void insertarindex(int index,int num){
-                LinkedList.inserthead.Node t= new LinkedList.inserthead.Node(num);
-                LinkedList.inserthead.Node temp = head;
-                if(index==0){
-                    insertathead(num);
-                    return;
-                }
-                if(index>=size()){
-                    insertatend(num);
-                    return;
-                }
-                for(int i=0;i<index-1;i++){
-                    temp=temp.next;
-                }
-                t.next = temp.next;
-                temp.next=t;
-            }
-            int size(){
-                int count=0;
-                LinkedList.inserthead.Node temp = head;
-                while(temp!=null){
-                    count++;
-                    temp= temp.next;
-                }
-                System.out.println(count+" ");
-                return count;
-            }
-
         }
-        public static void main(String[] args) {
-            LinkedList.inserthead.linkedlist ll = new LinkedList.inserthead.linkedlist();
-            ll.insertatend(1);
-            ll.insertatend(2);
-            ll.insertatend(3);
-            ll.insertatend(4);
-            ll.insertatend(5);
-            ll.display();
-            System.out.println();
-            ll.insertarindex(5,55);
-            ll.display();
-            System.out.println();
-//        System.out.println(ll.tail.val);
-//        ll.size();
-            ll.insertarindex(0,666);
-            ll.display();
-            ll.insertarindex(8,666);
-            ll.display();
+        void insertatindex(int index,int num){
+            Node t = new Node(num);
+            Node temp = head;
+            if(index>=size()){
+                insertatend(num);
+                return;
+            }
+            for(int i=0;i<index-1;i++){
+                temp =temp.next;
+            }
+            t.next =temp.next;
+            temp.next =t;
         }
+        int size(){
+            int count =0;
+            Node temp =head;
+            while(temp!=null){
+                count++;
+                temp= temp.next;
+            }
+            System.out.print(count+" ");
+            return count;
+        }
+        void delet(int index){
+
+            if(index ==0 ){
+                head = head.next;
+                return;
+            }
+            Node temp= head;
+            for(int i=1;i<=index-1;i++){
+                temp = temp.next;
+            }
+            temp.next =temp.next.next;
+            tail= temp;
+        }
+    }
+    public static void main(String[] args) {
+        linkedlist ll = new linkedlist();
+        ll.insertatend(1);
+        ll.insertatend(2);
+        ll.insertatend(3);
+        ll.insertatend(4);
+        System.out.println("Original Linkedlist: ");
+        ll.display();
+        System.out.println();
+        System.out.println("Delete Index Linkedlist: ");
+        ll.delet(4);
+        ll.display();
     }
 }
