@@ -1,6 +1,6 @@
 import java.util.*;
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) {    
         Scanner sc = new Scanner(System.in);
         System.out.println("Welcome yo number guss game !!");
         int mynumber = (int)(Math.random()*100);
