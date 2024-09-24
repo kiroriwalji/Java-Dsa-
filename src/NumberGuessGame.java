@@ -8,7 +8,7 @@ public class Main {
             System.out.println("Guess number 1-100: ");
             int userNumber= sc.nextInt();
             if(userNumber==mynumber){
-                System.out.println("WOOHOO : you guess the right number");
+                System.out.println("WOOHOO  :  you guess the right number");
                 break;
             }
             else if (userNumber<mynumber){
